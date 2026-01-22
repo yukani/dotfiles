@@ -1,0 +1,47 @@
+[window]
+dimensions = { columns = 95, lines = 22 }
+padding = { x = 5, y = 3 }
+
+[font]
+normal = { family = "IBM Plex Mono", style = "Semibold" }
+size = 11
+
+[mouse]
+bindings = [
+    { mouse = "Right", mods = "Shift", action = "Paste" },
+    { mouse = "Right", action = "Copy" },
+]
+
+[keyboard]
+bindings = [
+    { key = "PageUp", mods = "Control", action = "IncreaseFontSize" },
+    { key = "PageDown", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Up", mods = "Shift", action = "ScrollLineUp" },
+    { key = "Down", mods = "Shift", action = "ScrollLineDown" },
+]
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+thickness = 0.1
+
+[colors.primary]
+foreground = "#CCCCCC"
+background = "#1E1E1E"
+
+[colors.normal]
+black = "#000000"
+blue = "#2472C8"
+cyan = "#11A8CD"
+green = "#0DBC79"
+red = "#CD3131"
+white = "#E5E5E5"
+yellow = "#E5E510"
+
+[colors.bright]
+black = "#666666"
+blue = "#3B8EEA"
+cyan = "#29B8DB"
+green = "#23D18B"
+red = "#F14C4C"
+white = "#E5E5E5"
+yellow = "#F5F543"

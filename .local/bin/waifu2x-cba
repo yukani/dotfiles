@@ -1,0 +1,26 @@
+#!/bin/sh
+[ ! -e "$1" ] && printf "usage: %s [path to cbX archive]\n" "$0" && exit 1
+
+mime="$(file -b --mime-type -- "$1" 2>/dev/null || true)"
+base="$(basename -- "$1")"
+outdir="${2:-./${base%.*}}"
+rand=$(($(date +%N) % 32768))
+xdir="/tmp/${base%.*}$rand"
+case $mime in
+    application/zip|application/x-7z-compressed|application/x-rar)
+        7z x -o"$xdir" -- "$1" ;;
+    application/x-tar)
+        tar -C "$xdir" -xf -- "$1" ;;
+    *) printf "error: unknown format for CBX files: %s\n" "$mime"; exit 2 ;;
+esac
+
+
+waifu2x "$xdir"/* -o "$xdir"
+
+mkdir -p "$outdir"
+for f in "$xdir/"*_ups*; do
+    name="$(basename  -- "$f")"
+    cjxl "$f" "$outdir/${name%_ups*}.jxl"
+done
+
+rm -rf "$xdir"

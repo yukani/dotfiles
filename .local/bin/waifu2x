@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+import torch, sys, os, argparse, queue, threading
+from pathlib import Path
+from PIL import Image
+from tqdm import tqdm
+from concurrent.futures import ThreadPoolExecutor
+
+def image_loader_thread(paths, queue):
+    for path in paths:
+        try:
+            p=Path(path).resolve()
+            if p.exists():
+                queue.put((p, Image.open(p).convert("RGB")))
+        except Exception as e:
+            print(f"error: couldn't load image '{path}': {e}, skipping...")
+            queue.put((path, None))
+    queue.put(None)
+
+def main():
+    parser = argparse.ArgumentParser(description="waifu2x upscaler")
+    parser.add_argument("inputs", nargs="+", help="Input image paths")
+    parser.add_argument("-o", "--output-dir", default=".", help="Output directory (default: current directory)")
+    parser.add_argument("-n", "--noise-level", type=int, choices=[-1, 0, 1, 2, 3], default=3, help="Denoising level")
+    parser.add_argument("-m", "--method", choices=["noise", "scale", "scale2x", "scale4x"], default="scale", help="Method")
+    parser.add_argument("-t", "--model-type", default="art", help="Model type (art, art_scan, photo)")
+    parser.add_argument("--tile-size", type=int, default=256, help="Tile size for memory management")
+    parser.add_argument("--batch-size", type=int, default=3, help="Internal tile batch size, (GPU parallelism)")
+    parser.add_argument("-cpu", "--cpu", action='store_true', default=False, help="Run the program in CPU")
+    parser.add_argument("-png", "--png", action='store_true', default=False, help="Store the output as PNG instead of the input format")
+    args = parser.parse_args()
+
+    # it's not cuda actually
+    device_mode = "cuda" if torch.cuda.is_available() and not args.cpu else "cpu"
+    device = torch.device(device_mode)
+    print("running on:", torch.cuda.get_device_name(0) if device_mode == 'cuda' else 'CPU', file=sys.stderr)
+
+    try:
+        model = torch.hub.load(
+            "nagadomi/nunif:master",
+            "waifu2x",
+            model_type=args.model_type,
+            method=args.method,
+            noise_level=args.noise_level,
+            tile_size=args.tile_size,
+            batch_size=args.batch_size,
+            trust_repo=True
+        ).to(device)
+    except Exception as e:
+        print(f"error: failed to load model: {e}", file=sys.stderr)
+        exit(1)
+
+    # use fp16 for amds, they like it a lot.
+    if device.type == "cuda":
+        model = model.half()
+
+    # mkdir if the given output doesn't exist yet
+    Path(args.output_dir).resolve().mkdir(parents=True, exist_ok=True)
+
+    # prefetch input images to make CPU load them when GPU deals with scaling
+    load_queue = queue.Queue(maxsize=4)
+    loader_thread = threading.Thread(target=image_loader_thread, args=(args.inputs, load_queue), daemon=True)
+    loader_thread.start()
+
+    print(f"processing {len(args.inputs)} images...", file=sys.stderr)
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        progress=tqdm(args.inputs, desc="upscaling", unit="image", file=sys.stderr)
+        while True:
+            item = load_queue.get()
+            if item is None:
+                break # end
+
+            path, img = item
+            if img:
+                try:
+                    with torch.inference_mode():
+                        result = model.infer(img)
+
+                    filename = os.path.basename(path)
+                    name, ext = os.path.splitext(filename)
+                    if args.png:
+                        ext = ".png"
+                    save_path = os.path.join(args.output_dir, f"{name}_ups{ext}")
+
+                    executor.submit(result.save, save_path)
+                except Exception as e:
+                    print(f"\nerror processing {path}: {e}", file=sys.stderr)
+            progress.update(1)
+
+        progress.close()
+    loader_thread.join()
+
+if __name__ == "__main__":
+    main()
