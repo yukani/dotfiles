@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ -z "$HP_MAC_ADDR" ]; then
+    printf "#################################\n"
+    printf "# \$HP_MAC_ADDR is not defined. #\n"
+    printf "#################################\n"
+    exit 1
+fi
+
+if [ -z "$HP_MODEL_ID" ]; then
+    printf "###########################################\n"
+    printf "# \$HP_MODEL_ID is not defined.           #\n"
+    printf "# type 'openscq30 list-models' to find it #\n"
+    printf "###########################################\n"
+    exit 1
+fi
+
+openscq30 paired-devices add --mac-address "$HP_MAC_ADDR" --model "$HP_MODEL_ID"
+openscq30 device --mac-address "$HP_MAC_ADDR" setting --set gamingMode=true

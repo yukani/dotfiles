@@ -1,0 +1,13 @@
+[Unit]
+Description=HTTP server to invoke notify-send
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/bin/notify-send-server.py
+WorkingDirectory=%h
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

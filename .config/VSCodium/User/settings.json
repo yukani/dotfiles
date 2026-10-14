@@ -1,0 +1,7 @@
+{
+    "editor.fontFamily": "'IBM Plex Mono', monospace",
+    "editor.fontLigatures": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "terminal.external.linuxExec": "alacritty",
+    "window.autoDetectColorScheme": true
+}

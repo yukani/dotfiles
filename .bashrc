@@ -2,10 +2,7 @@
 __RED="\[$(tput setaf 1)\]"
 __GREEN="\[$(tput setaf 2)\]"
 __YELLOW="\[$(tput setaf 3)\]"
-__NAVY="\[$(tput setaf 4)\]"
-__PURPLE="\[$(tput setaf 5)\]"
 __BLUE="\[$(tput setaf 6)\]"
-__WHITE="\[$(tput setaf 7)\]"
 __GRAY="\[$(tput setaf 8)\]"
 __CLR_RESET="\[$(tput sgr0)\]"
 
@@ -58,6 +55,17 @@ alias vi="vim"
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -Glh'
 alias grep='grep --color=auto'
+
+if pacman -Q pkgfile &> /dev/null; then
+    source /usr/share/doc/pkgfile/command-not-found.bash
+else
+    printf "####################################################################################\n"
+    printf "# pkgfile is not installed. command-not-found hook won't run.                      #\n"
+    printf "# install it and run 'pkgfile -u' to setup, enable 'pkgfile-update.timer' as well. #\n"
+    printf "####################################################################################\n"
+fi
+
+[ -f "$HOME/.env" ] && source "$HOME/.env"
 
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"

@@ -1,0 +1,10 @@
+[user]
+	name = yukani
+	email = kurbagatengu@gmail.com
+
+[init]
+	defaultBranch = master
+
+[alias]
+	ignore-conf = update-index --skip-worktree
+	unignore-conf = update-index --no-skip-worktree
