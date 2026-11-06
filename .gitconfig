@@ -8,3 +8,4 @@
 [alias]
 	ignore-conf = update-index --skip-worktree
 	unignore-conf = update-index --no-skip-worktree
+	set-origin = remote set-url origin

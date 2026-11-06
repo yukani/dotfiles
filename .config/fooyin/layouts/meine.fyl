@@ -3,11 +3,14 @@
     "Options": {
         "ApplyWindowSize": true
     },
+    "ToolbarState": "AAAA/wAAAAH9AAAAAAAABfwAAAMpAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAE0AZQBuAHUAVABvAG8AbABiAGEAcgAAAAAA/////wAAAAAAAAAA",
+    "Toolbars": [
+    ],
     "Version": 1,
     "Widgets": [
         {
             "SplitterVertical": {
-                "State": "AAAA/wAAAAEAAAADAAAALQAAA3cAAAAcAP////8BAAAAAgA=",
+                "State": "AAAA/wAAAAEAAAADAAAAIQAAAjYAAAAfAP////8BAAAAAgA=",
                 "Widgets": [
                     {
                         "StatusBar": {
@@ -15,51 +18,93 @@
                     },
                     {
                         "SplitterHorizontal": {
-                            "State": "AAAA/wAAAAEAAAADAAABKAAAAi8AAAEbAP////8BAAAAAQA=",
+                            "State": "AAAA/wAAAAEAAAACAAAEUAAAAZ8A/////wEAAAABAA==",
                             "Widgets": [
                                 {
-                                    "LibraryTree": {
-                                        "AlternatingRows": false,
-                                        "Animated": true,
-                                        "ArtworkCornerRadius": 0,
-                                        "AutoExpandSearchResultLimit": 10,
-                                        "AutoSwitch": true,
-                                        "DoubleClickAction": 0,
-                                        "ExpandOnSingleClick": false,
-                                        "Grouping": 2,
-                                        "ID": "44279b6f623d41a0b9c69049a707a9ea",
-                                        "IconHeight": 36,
-                                        "IconWidth": 36,
-                                        "KeepAlive": false,
-                                        "MiddleClickAction": 0,
-                                        "PlaylistEnabled": false,
-                                        "PlaylistName": "Library Selection",
-                                        "RestoreState": true,
-                                        "RowHeight": 0,
-                                        "SendPlayback": true,
-                                        "ShowHeader": true,
-                                        "ShowScrollbar": true,
-                                        "ShowSummaryNode": true,
-                                        "State": "AAAAVHjaY2BgENjj0/br02+RiA8CR9Od55/hYmBgYAZiAY+GAx912O7miuhVOWxw3C8FEot/Ou2Nqf3lvOK47EsfxbPzQGKmLbpsVsFBOgnTZ/o3+R+VBwD2oR25",
-                                        "SummaryNodeTitle": "All Music (%trackcount%)"
-                                    }
-                                },
-                                {
-                                    "PlaylistTabs": {
-                                        "CloseOnMiddleClick": false,
-                                        "ExpandTabs": false,
-                                        "ShowAddButton": false,
-                                        "ShowClearButton": false,
-                                        "ShowCloseButton": false,
-                                        "TabPosition": 0,
+                                    "SplitterHorizontal": {
+                                        "State": "AAAA/wAAAAEAAAACAAAAZAAAAGQA/////wEAAAABAA==",
                                         "Widgets": [
                                             {
-                                                "Playlist": {
-                                                    "Columns": "8:132|3|0:2|1|7:2",
-                                                    "HeaderState": "AAAAZXjaY2BgYGVgYFAE4itArAOlzRkg4iDABMTMQMwCxIwgcft1OwJft8rtsL8BpoLst1Q9dF8nUg3n75wJArNAihn+AwEAJusa4A==",
-                                                    "ID": "6c5d6d7abe264bc3ae9d11e0349a9dfa",
-                                                    "Preset": 0,
-                                                    "SingleMode": false
+                                                "LibraryTree": {
+                                                    "AlternatingRows": false,
+                                                    "Animated": true,
+                                                    "ArtworkCornerRadius": 0,
+                                                    "AutoExpandSearchResultLimit": 10,
+                                                    "AutoSwitch": true,
+                                                    "ControlsPosition": 1,
+                                                    "DoubleClickAction": 0,
+                                                    "ExpandOnSingleClick": false,
+                                                    "Grouping": 2,
+                                                    "ID": "44279b6f623d41a0b9c69049a707a9ea",
+                                                    "IconHeight": 36,
+                                                    "IconWidth": 36,
+                                                    "KeepAlive": false,
+                                                    "MiddleClickAction": 0,
+                                                    "PlaylistEnabled": false,
+                                                    "PlaylistName": "Library Selection",
+                                                    "RestoreState": true,
+                                                    "RowHeight": 0,
+                                                    "SearchBar": {
+                                                        "AutoSearch": true,
+                                                        "SearchMode": 0,
+                                                        "ShowAll": false
+                                                    },
+                                                    "SendPlayback": true,
+                                                    "ShowControls": false,
+                                                    "ShowHeader": true,
+                                                    "ShowScrollbar": true,
+                                                    "ShowSummaryNode": true,
+                                                    "State": "AAAA9HjaY2BgEEh80mv+dOnOyDS7ot2li457MjAwcAOxwM4nCu5CM/3vzJ/ZlTL1o8khkFgJ/52korZ2M9vAr5ye7/6Hg8S8kmry8nSEZocmbNBYdMFtP0jsfofo0lbGinVTnY84HGu8Gw8SK8xY4uZ8t++T/ZJpWs9f1d8Fif3zT7t+OubFvFQXUZYXV9qrQWJZd2XzZBaEtQf0Nn/3v/h6NUjsIut8rdQ/kzVmZK7b2bHsBsiNAh4NBz7qsN3NFdGrctjguF8KJPZp7/p/Ox9Xsst+vyq+4eQ2OZCYyqX3My3FQ609f1lk88+fVAAABohiyQ==",
+                                                    "SummaryNodeTitle": "All Music (%trackcount%)"
+                                                }
+                                            },
+                                            {
+                                                "PlaylistTabs": {
+                                                    "CloseOnMiddleClick": false,
+                                                    "ExpandTabs": false,
+                                                    "ShowAddButton": false,
+                                                    "ShowClearButton": false,
+                                                    "ShowCloseButton": false,
+                                                    "TabPosition": 0,
+                                                    "TitleScript": "%playlist_name%",
+                                                    "Widgets": [
+                                                        {
+                                                            "Playlist": {
+                                                                "AlternatingRows": true,
+                                                                "ArtworkCornerRadius": 0,
+                                                                "ArtworkReflection": false,
+                                                                "ArtworkReflectionGap": 3,
+                                                                "ArtworkReflectionHeight": 33,
+                                                                "ArtworkReflectionOpacity": 35,
+                                                                "BackgroundBlur": 0,
+                                                                "BackgroundCoverType": 0,
+                                                                "BackgroundCustomImage": "",
+                                                                "BackgroundFadeDuration": 0,
+                                                                "BackgroundImageMode": 0,
+                                                                "BackgroundMaxSize": 0,
+                                                                "BackgroundOpacity": 40,
+                                                                "BackgroundPosition": 1,
+                                                                "BackgroundScaling": 2,
+                                                                "BackgroundTrackPreference": 0,
+                                                                "Columns": "8:132|3|0:2|1|7:2",
+                                                                "CustomColumns": false,
+                                                                "DoubleClickAction": 5,
+                                                                "HeaderState": "AAAAZXjaY2BgYGVgYBDBgkHiIMAExMxAzALEjCBx+3U7Al+3yu2wvwGmguy3VD10XydSDefvnAkCs0CKGf4DAQCOXBkY",
+                                                                "ID": "6c5d6d7abe264bc3ae9d11e0349a9dfa",
+                                                                "ImagePadding": 5,
+                                                                "ImagePaddingTop": 0,
+                                                                "MiddleClickAction": 0,
+                                                                "Preset": 0,
+                                                                "ShowHeader": true,
+                                                                "ShowScrollbar": true,
+                                                                "SingleMode": false,
+                                                                "StartPlaybackOnSend": false,
+                                                                "StickyArtwork": false,
+                                                                "StickyHeaders": false,
+                                                                "StickySubheaders": false
+                                                            }
+                                                        }
+                                                    ]
                                                 }
                                             }
                                         ]
@@ -78,7 +123,7 @@
                                                     "FadeDurationMs": 1000,
                                                     "KeepAspectRatio": true,
                                                     "MiddleClickAction": 3,
-                                                    "ShowStoppedTrack": true
+                                                    "TrackPreference": 0
                                                 }
                                             },
                                             {
@@ -88,7 +133,8 @@
                                                     "ShowHeader": true,
                                                     "ShowHorizontalScrollbar": false,
                                                     "ShowVerticalScrollbar": true,
-                                                    "State": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQYAAAACAAAAAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAAAigAAAAEAAAAAAAAAfAAAAAEAAAACAAAD6AAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=="
+                                                    "State": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYoAAAACAAAAAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAAAngAAAAEAAAAAAAAA7AAAAAEAAAACAAAD6AAAAAAAAAAAAAAAAAAAAAAAAAAAAQ==",
+                                                    "TrackPreference": 0
                                                 }
                                             }
                                         ]
@@ -125,6 +171,7 @@
                                 },
                                 {
                                     "VolumeControls": {
+                                        "Curve": 4,
                                         "Mode": 3
                                     }
                                 }
@@ -136,7 +183,7 @@
         }
     ],
     "WindowSize": {
-        "Height": 652,
-        "Width": 1152
+        "Height": 836,
+        "Width": 1532
     }
 }

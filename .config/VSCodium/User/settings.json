@@ -3,5 +3,8 @@
     "editor.fontLigatures": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "terminal.external.linuxExec": "alacritty",
-    "window.autoDetectColorScheme": true
+    "window.autoDetectColorScheme": true,
+    "editor.fontSize": 15,
+    "editor.minimap.enabled": false,
+    "window.density.layout": "compact"
 }
